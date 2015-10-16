@@ -10,6 +10,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var flatten = require('gulp-flatten');
+var connect = require('gulp-connect');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -41,8 +42,6 @@ gulp.task('templatecache', function(done){
     .on('end', done);
 });
 
-
-
 gulp.task('ng_annotate', function(done){
   gulp.src('./www/js/**/*.js')
     .pipe(ngAnnotate({single_quotes: true}))
@@ -51,11 +50,12 @@ gulp.task('ng_annotate', function(done){
     .on('end', done);
 });
 
-gulp.task('concat', function () {
+gulp.task('concat', function (done) {
   // Concatenate all custom js files
   gulp.src('./www/js/**/*.js')
     .pipe(concat('bd.min.js'))
-    .pipe(gulp.dest('./www/dist/dist_js'));
+    .pipe(gulp.dest('./www/dist/dist_js'))
+    .on('end', done);
 });
 
 gulp.task('useref', function(done){
@@ -68,11 +68,20 @@ gulp.task('useref', function(done){
     .on('end', done);
 });
 
+//gulp.task('connectDist', function () {
+//  connect.server({
+//    root: 'dist',
+//    port: 8001,
+//    livereload: true
+//  });
+//});
+
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.templateCache, ['templateCache']);
   gulp.watch(paths.ng_annotate, ['ng_annotate']);
   gulp.watch(paths.useref, ['useref']);
+  gulp.watch(paths.ng_annotate, ['concat']);
 });
 
 gulp.task('install', ['git-check'], function() {

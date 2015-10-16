@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+  //'use strict';
 
   angular.module('starter')
     .config(['$stateProvider', '$urlRouterProvider', Config]);
@@ -12,6 +12,12 @@
         url: '/',
         controller : 'welcomeCtrl',
         templateUrl: 'welcome.html'
+      })
+
+      .state('register', {
+        url: '/register',
+        controller: 'registerCtrl',
+        templateUrl: 'register.html'
       })
 
 
