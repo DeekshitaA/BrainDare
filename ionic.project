@@ -5,8 +5,8 @@
     "sass",
     "templatecache",
     "ng_annotate",
-    "useref",
-    "watch"
+    "watch",
+    "concat"
   ],
   "watchPatterns": [
     "www/**/*",

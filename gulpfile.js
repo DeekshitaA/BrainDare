@@ -10,7 +10,6 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var flatten = require('gulp-flatten');
-var connect = require('gulp-connect');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -19,7 +18,7 @@ var paths = {
   useref: ['./www/*.html']
 };
 
-gulp.task('default', [ 'sass', 'templatecache', 'ng_annotate', 'useref', 'concat']);
+gulp.task('default', [ 'sass', 'templatecache', 'ng_annotate', 'concat']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -67,14 +66,6 @@ gulp.task('useref', function(done){
     .pipe(gulp.dest('./www/dist'))
     .on('end', done);
 });
-
-//gulp.task('connectDist', function () {
-//  connect.server({
-//    root: 'dist',
-//    port: 8001,
-//    livereload: true
-//  });
-//});
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
