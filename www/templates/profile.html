@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<ion-view title="Profile" ng-init="init()">
+  <ion-content>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img ng-src="{{profile.profileData.picture.data.url}}">
+        <h2>{{profile.profileData.name}}</h2>
+        <p>{{profile.profileData.id}}</p>
+      </div>
+      <a href="#" class="item item-icon-left">
+        <i class="icon ion-earth"></i>
+        {{profile.profileData.website}}
+      </a>
+      <a href="#" class="item item-icon-left">
+        <i class="icon ion-home"></i>
+        {{profile.profileData.location.name}}
+      </a>
+      <a href="#" class="item item-icon-left">
+        <i class="icon ion-heart"></i>
+        {{profile.profileData.relationship_status}}
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

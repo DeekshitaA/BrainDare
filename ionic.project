@@ -1,7 +1,7 @@
 {
   "name": "BrainDare",
-  "app_id": "",
-  "gulpStartupTasks":[
+  "app_id": "b90389e8",
+  "gulpStartupTasks": [
     "sass",
     "templatecache",
     "ng_annotate",

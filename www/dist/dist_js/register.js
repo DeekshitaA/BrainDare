@@ -7,15 +7,15 @@
 
       this.user ={};
 
-      this.test = "Hello";
-
-      this.addUser = function() {
+     this.addUser = function() {
         console.log(this.user);
-        registerUserService.createUser(this.user);
-      };
+        registerUserService.createUser(this.user).then(function(response) {
+            console.log("You got to the place ", response);
+        })
+     };
     }])
 
-    .service('registerUserService', ['$http', function($http){
+    .service('registerUserService', ['$http', '$location', function($http, $location){
       this.createUser = function(user) {
         var data = user;
         $http({
@@ -25,6 +25,7 @@
         })
           .then(function(data, status, headers, config){
             console.log('Success!');
+            return data;
             // called when the data is available
           },
           function(data, status, headers, config) {
@@ -35,4 +36,4 @@
       };
      }])
 
-})
+}());

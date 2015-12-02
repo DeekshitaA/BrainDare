@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="content">
+  <!--<button class="button button-energized" ng-click="addImage()">-->
+  <!--Add image-->
+  <!--</button><br><br>-->
 
-</body>
-</html>
+  <!--<img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/>-->
+  <form ng-submit="login.loginUser()">
+
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input type="text" placeholder="Email" ng-model="register.user.email">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Password</span>
+        <input type="password" placeholder="Password" ng-model="register.user.password">
+      </label>
+    </div>
+    <div class="padding">
+      <button  class="button button-block button-positive">Login</button>
+      <button ng-click="login.facebook()" target="_self">Login With facebook !</button>
+    </div>
+  </form>
+
+</div>
+
+
