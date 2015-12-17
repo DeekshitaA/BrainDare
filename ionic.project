@@ -1,12 +1,9 @@
 {
   "name": "BrainDare",
   "app_id": "b90389e8",
+  "defaultBrowser": "google chrome",
   "gulpStartupTasks": [
-    "sass",
-    "templatecache",
-    "ng_annotate",
-    "watch",
-    "concat"
+    "default"
   ],
   "watchPatterns": [
     "www/**/*",

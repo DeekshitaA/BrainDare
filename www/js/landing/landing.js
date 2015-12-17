@@ -3,9 +3,9 @@
 
   angular.module('app.landing', [])
 
-    .controller('landingCtrl' , function(){
+    .controller('landingCtrl' , function() {
 
 
-    });
+    })
 
 }());

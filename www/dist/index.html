@@ -15,19 +15,22 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
-    <script src="cordova.js"></script>
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
 
     <!-- your app's js -->
     <script src="dist/dist_js/bd.min.js"></script>
-    <!--<script src="dist/dist_js/app.js"></script>-->
-    <!--<script src="dist/dist_js/states.js"></script>-->
-    <!--<script src="dist/dist_js/templates.js"></script>-->
-  </head>
-  <body ng-app="app" ng-strict-di="">
+    </head>
+  <body ng-app="app">
      <ion-nav-view></ion-nav-view>
   </body>
 </html>
