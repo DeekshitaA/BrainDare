@@ -4,6 +4,18 @@
   angular.module('app')
     .config(['$stateProvider', '$urlRouterProvider','authProvider','$locationProvider', '$httpProvider','jwtInterceptorProvider', Config])
 
+    .run(['$rootScope', 'auth', 'store', function($rootScope, auth, store) {
+      $rootScope.$on('$locationChangeStart', function() {
+        if (!auth.isAuthenticated) {
+          var token = store.get('token');
+          if (token) {
+            auth.authenticate(store.get('profile'), token);
+          }
+        }
+
+      });
+    }])
+
       function Config($stateProvider, $urlRouterProvider, authProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
 
         $stateProvider
@@ -29,26 +41,27 @@
             templateUrl: 'login.html',
           })
 
-          .state('landing', {
-            url: '/landing',
-            controller: 'landingCtrl as landing',
-            templateUrl: 'landing.html'
-          })
-
-          .state('profile', {
-            url: '/profile',
-            controller: 'profileCtrl as profile',
-            templateUrl: 'profile.html'
-          })
+          //.state('landing', {
+          //  url: '/landing',
+          //  controller: 'landingCtrl as landing',
+          //  templateUrl: 'landing.html'
+          //})
+          //
+          //.state('profile', {
+          //  url: '/profile',
+          //  controller: 'profileCtrl as profile',
+          //  templateUrl: 'profile.html'
+          //})
 
           // setup an abstract state for the tabs directive
           .state('tab', {
             url: "/tab",
             abstract: true,
             templateUrl: "tabs.html",
-            data: {
-              //requiresLogin: true
-            }
+            // The tab requires user login
+            //data: {
+            //  requiresLogin: true
+            //}
           })
 
           // Each tab has its own nav history stack:
@@ -63,7 +76,7 @@
             }
           })
 
-          .state('tab.dash_self', {
+          .state('tab.dare_self', {
             url:'/dash/self',
             views: {
               'tab-dash': {
@@ -92,15 +105,15 @@
               }
             }
           })
-          .state('tab.chat-detail', {
-            url: '/chats/:chatId',
-            views: {
-              'tab-chats': {
-                templateUrl: 'chat-detail.html',
-                controller: 'ChatDetailCtrl as chatDet'
-              }
-            }
-          })
+          //.state('tab.chat-detail', {
+          //  url: '/chats/:chatId',
+          //  views: {
+          //    'tab-chats': {
+          //      templateUrl: 'chat-detail.html',
+          //      controller: 'ChatDetailCtrl as chatDet'
+          //    }
+          //  }
+          //})
 
           .state('tab.account', {
             url: '/account',
@@ -113,7 +126,7 @@
           });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/dash');
+        $urlRouterProvider.otherwise('/login');
 
 
         authProvider.init({
@@ -122,18 +135,15 @@
           loginState: 'login' // This is the name of the state where you'll show the login, which is defined above...
         });
 
-        // $locationProvider.html5Mode(true);
 
-        jwtInterceptorProvider.tokenGetter = function (store, jwtHelper, auth) {
+        jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
           var idToken = store.get('token');
           var refreshToken = store.get('refreshToken');
-          // If no token return null
           if (!idToken || !refreshToken) {
             return null;
           }
-          // If token is expired, get a new one
           if (jwtHelper.isTokenExpired(idToken)) {
-            return auth.refreshIdToken(refreshToken).then(function (idToken) {
+            return auth.refreshIdToken(refreshToken).then(function(idToken) {
               store.set('token', idToken);
               return idToken;
             });

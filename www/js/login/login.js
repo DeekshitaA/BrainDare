@@ -3,46 +3,65 @@
 
   angular.module('app.login', ['ngCordova'])
 
-   // .controller('loginCtrl' ,['loginUserService', '$location','$cordovaOauth','$window','auth','$scope', function(loginUserService, $location, $cordovaOauth, $window, auth, $scope){
-      .controller('loginCtrl'  , function($scope, auth, $state, store){
-      this.login = function() {
-        auth.signin({
-          authParams: {
-            scope: 'openid offline_access',
-            device: 'Mobile device'
-          }
-        }, function(profile, token, accessToken, state, refreshToken) {
-          // Success callback
-          store.set('profile', profile);
-          store.set('token', token);
-          store.set('refreshToken', refreshToken);
-          $state.go('profile');
-        }, function() {
-          // Error callback
-        });
-      }
-        $scope.$on('$ionic.reconnectScope', function() {
-          this.login();
-        });
-
-        this.login();
+     .controller('loginCtrl'  , function($scope, auth, $state, store, Auth){
+        //auth.signin({
+        //  closable: false,
+        //  // This asks for the refresh token
+        //  // So that the user never has to log in again
+        //  authParams: {
+        //    scope: 'openid offline_access'
+        //  }
+        //}, function(profile, idToken, accessToken, state, refreshToken) {
+        //  store.set('profile', profile);
+        //  store.set('token', idToken);
+        //  store.set('refreshToken', refreshToken);
+        //  auth.getToken({
+        //    api: 'firebase'
+        //  }).then(function(delegation) {
+        //    store.set('firebaseToken', delegation.id_token);
+        //    $state.go('tab.dash');
+        //  }, function(error) {
+        //    console.log("There was an error logging in", error);
+        //  })
+        //}, function(error) {
+        //  console.log("There was an error logging in", error);
+        //});
+     // }
+     //   $scope.$on('$ionic.reconnectScope', function() {
+     //     this.login();
+     //   });
+     //
+     //   this.login();
 
      //
-     //   this.facebook = function() {
-     //   $cordovaOauth.facebook("519087128259422", ["email"]).then(function(result) {
-     //    // Auth.$authWithOAuthToken("facebook", result.access_token).then(function (authData) {
-     //    //   console.log(JSON.stringify(authData));
-     //       $window.localStorage.accessToken = result.access_token;
-     //       $location.path("/profile");
-     //     //}, function (error) {
-     //     //  console.error("ERROR: " + error);
-     //     //});
-     //   }, function(error) {
-     //     alert("There was a problem signing in!  See the console for logs");
-     //     console.log(error);
-     //   });
-     //};
+        this.facebook = function() {
+          Auth.$authWithOAuthPopup("facebook").then(function(authData){
+            console.log(authData);
+            $state.go('tab.dash');
+          }).catch(function(error){
+            console.error(error);
+          },{
+            remember: "sessionOnly",
+            scope: "email,user_likes"
+          })
 
+        //$cordovaOauth.facebook("519087128259422", ["email"]).then(function(result) {
+        // // Auth.$authWithOAuthToken("facebook", result.access_token).then(function (authData) {
+        // //   console.log(JSON.stringify(authData));
+        //    $window.localStorage.accessToken = result.access_token;
+        //    $location.path("/profile");
+        //  //}, function (error) {
+        //  //  console.error("ERROR: " + error);
+        //  //});
+        //}, function(error) {
+        //  alert("There was a problem signing in!  See the console for logs");
+        //  console.log(error);
+        //});
+     };
+
+       this.logout = function (){
+         Auth.$unauth();
+       }
     //  this.login = function(authMethod) {
     //    console.log("Login Got it ");
     //    Auth.$authWithOAuthRedirect(authMethod).then(function(authData) {
@@ -56,19 +75,19 @@
     //      }
     //    });
     //
-    //    Auth.$onAuth(function(authData) {
-    //
-    //      if (authData === null) {
-    //        console.log('Not logged in yet');
-    //      } else {
-    //        console.log('Logged in as', authData.uid);
-    //      //  $location.path("/profile");
-    //      }
-    //      // This will display the user's name in our view
-    //      $scope.authData = authData;
-    //     // console.log('authData', this.authData);
-    //    });
-    //  };
+        Auth.$onAuth(function(authData) {
+
+          if (authData === null) {
+            console.log('Not logged in yet');
+          } else {
+            console.log('Logged in as', authData.uid);
+          //  $location.path("/profile");
+          }
+          // This will display the user's name in our view
+          $scope.authData = authData;
+         console.log('authData', $scope.authData);
+        });
+
 
     })
 

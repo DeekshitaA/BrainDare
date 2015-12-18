@@ -14,60 +14,75 @@ angular.module('app',
     'app.landing',
     'app.tabs'
   ])
-  .run(['$ionicPlatform', '$rootScope', 'auth', 'store', 'jwtHelper', '$location', function($ionicPlatform, $rootScope, auth, store, jwtHelper, $location) {
+
+  .run(['$ionicPlatform', function($ionicPlatform) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
-      if (window.cordova && window.cordova.plugins.Keyboard) {
+      if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
-      if (window.StatusBar) {
+      if(window.StatusBar) {
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
     });
-
-    auth.hookEvents();
-    //This event gets triggered on URL change
-    var refreshingToken = null;
-    $rootScope.$on('$locationChangeStart', function() {
-      var token = store.get('token');
-      var refreshToken = store.get('refreshToken');
-      if (token) {
-        if (!jwtHelper.isTokenExpired(token)) {
-          if (!auth.isAuthenticated) {
-            auth.authenticate(store.get('profile'), token);
-          }
-        } else {
-          if (refreshToken) {
-            if (refreshingToken === null) {
-              refreshingToken = auth.refreshIdToken(refreshToken).then(function(idToken) {
-                store.set('token', idToken);
-                auth.authenticate(store.get('profile'), idToken);
-              }).finally(function() {
-                refreshingToken = null;
-              });
-            }
-            return refreshingToken;
-          } else {
-            $location.path('/login');// Notice: this url must be the one defined
-          }                          // in your login state. Refer to step 5.
-        }
-      }
-      if (!auth.isAuthenticated) {
-        var token = store.get('token');
-        if (token) {
-          auth.authenticate(store.get('profile'), token);
-        }
-      }
-    });
   }])
 
-  //.factory('Auth', function($firebaseAuth) {
-  //  var endPoint = 'https://boiling-heat-1945.firebaseio.com';
-  //  var usersRef = new Firebase(endPoint);
-  //  return $firebaseAuth(usersRef);
+  //.run(function($ionicPlatform, $rootScope, auth, store, jwtHelper, $location) {
+  //  $ionicPlatform.ready(function() {
+  //    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+  //    // for form inputs)
+  //    if (window.cordova && window.cordova.plugins.Keyboard) {
+  //      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+  //    }
+  //    if (window.StatusBar) {
+  //      // org.apache.cordova.statusbar required
+  //      StatusBar.styleDefault();
+  //    }
+  //  });
+  //
+  //  auth.hookEvents();
+  //  //This event gets triggered on URL change
+  //  var refreshingToken = null;
+  //  $rootScope.$on('$locationChangeStart', function() {
+  //    var token = store.get('token');
+  //    var refreshToken = store.get('refreshToken');
+  //    if (token) {
+  //      if (!jwtHelper.isTokenExpired(token)) {
+  //        if (!auth.isAuthenticated) {
+  //          auth.authenticate(store.get('profile'), token);
+  //        }
+  //      } else {
+  //        if (refreshToken) {
+  //          if (refreshingToken === null) {
+  //            refreshingToken = auth.refreshIdToken(refreshToken).then(function(idToken) {
+  //              store.set('token', idToken);
+  //              auth.authenticate(store.get('profile'), idToken);
+  //            }).finally(function() {
+  //              refreshingToken = null;
+  //            });
+  //          }
+  //          return refreshingToken;
+  //        } else {
+  //          $location.path('/login');// Notice: this url must be the one defined
+  //        }                          // in your login state. Refer to step 5.
+  //      }
+  //    }
+  //    if (!auth.isAuthenticated) {
+  //      var token = store.get('token');
+  //      if (token) {
+  //        auth.authenticate(store.get('profile'), token);
+  //      }
+  //    }
+  //  });
   //})
+
+  .factory('Auth', ['$firebaseAuth', function($firebaseAuth) {
+    var endPoint = 'https://boiling-heat-1945.firebaseio.com';
+    var usersRef = new Firebase(endPoint);
+    return $firebaseAuth(usersRef);
+  }])
 
 .constant('FIREBASE_URI', 'https://boiling-heat-1945.firebaseio.com');
 

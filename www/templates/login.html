@@ -1,11 +1,81 @@
 
-<ion-pane id="welcome" class="welcomePane">
-  <h1 class="title">Dare to Take the first step to changing your life!!</h1>
+<!--<ion-pane id="welcome" class="welcomePane">-->
+  <!--<h1 class="title">Dare to Take the first step to changing your life!!</h1>-->
 
-  <ion-footer-bar>
-    <a class="full_width button button-assertive" ng-click="login.login()" >
-      Lets Go !!
-    </a>
-  </ion-footer-bar>
-</ion-pane>
+  <!--<ion-footer-bar>-->
+    <!--<a class="full_width button button-assertive" ng-click="login.login()" >-->
+      <!--Lets Go !!-->
+    <!--</a>-->
+  <!--</ion-footer-bar>-->
+<!--</ion-pane>-->
+<ion-view hide-nav-bar="true">
+  <ion-content>
 
+
+    <section class="login-container">
+      <div class = "col header text-center">
+        <img src="./img/bdIcon.png" class = "logo" />
+      </div>
+      <div class = "col button-row">
+        <form name="login.loginForm" novalidate>
+          <div class="list">
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Email</span>
+              <input type="email" placeholder="Email" ng-model="user.email">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Password</span>
+              <input type="password" placeholder="Password" ng-model="user.password">
+            </label>
+          </div>
+          <div class="padding">
+            <button  class="button button-block button-balanced">Access</button>
+          </div>
+          </form>
+      </div>
+      <div class = "col button-row text-center">
+       OR
+      </div>
+      <div class = "col text-center">
+        <button  class="button icon-center ion-social-facebook button-positive button-full"  ng-click="login.facebook()"></button>
+
+      </div>
+    </section>
+
+
+
+
+    <!---->
+    <!---->
+    <!--<div class="card">-->
+    <!--&lt;!&ndash; The content of the page &ndash;&gt;-->
+    <!--<form name="login.loginForm" novalidate>-->
+      <!--<div class="list">-->
+        <!--<label class="item item-input item-floating-label">-->
+          <!--<span class="input-label">Email</span>-->
+          <!--<input type="email" placeholder="Email" ng-model="user.email">-->
+        <!--</label>-->
+        <!--<label class="item item-input item-floating-label">-->
+          <!--<span class="input-label">Password</span>-->
+          <!--<input type="password" placeholder="Password" ng-model="user.password">-->
+        <!--</label>-->
+      <!--</div>-->
+      <!--<div class="padding">-->
+        <!--<button  class="button button-block button-balanced">Access</button>-->
+      <!--</div>-->
+      <!--<div class="padding">-->
+      <!--<span class="col-center">OR</span>-->
+        <!--</div>-->
+      <!--<div class="padding">-->
+      <!--<button  class="button icon-center ion-social-facebook button-positive button-full"  ng-click="login.facebook()" ng-hide="authData"></button>-->
+      <!--</div>-->
+    <!--</form>-->
+    <!--<div class="card" ng-show="authData">-->
+      <!--<img ng-src="{{authData.facebook.cachedUserProfile.picture.data.url}}" />-->
+      <!--<span>Welcome back {{authData.facebook.displayName}}</span>-->
+    <!--</div>-->
+
+    <!--<button ng-click="login.logout()" ng-show="authData">Logout</button>-->
+    </div>
+  </ion-content>
+</ion-view>

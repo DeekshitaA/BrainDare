@@ -4,29 +4,43 @@
 
   angular.module('app.tabs', ['firebase'])
 
-  .controller('DashCtrl', ['brainDareService', '$state', function(brainDareService, $state) {
+  .controller('DashCtrl', ['$scope', 'brainDareService', '$state', 'Auth', function($scope,brainDareService, $state, Auth) {
+    this.showSelfDares = false;
 
     this.goToState = function(state) {
       $state.go(state);
     }
-    //this.currentItem = null;
-    //
-    //this.items = brainDareService.getItems();
-    //
-    //this.addItem = function () {
-    //  brainDareService.addItem(angular.copy(this.newItem));
-    //  this.newItem = { id: '', name: '' };
-    //};
-    //
-    //this.updateItem = function (id) {
-    //  brainDareService.updateItem(id);
-    //};
-    //
-    //this.removeItem = function (id) {
-    //  brainDareService.removeItem(id);
-    //};
+    Auth.$onAuth(function(authData) {
 
-}])
+      if (authData === null) {
+        console.log('Not logged in yet');
+      } else {
+        console.log('Logged in as', authData.uid);
+      }
+      // This will display the user's name in our view
+      $scope.authData = authData;
+    });
+
+    this.selfDares = function(){
+      if($scope.count && $scope.count > 0 && !this.showSelfDares){
+        this.showSelfDares = true;
+      } else if(this.showSelfDares === true){
+        this.showSelfDares = false;
+      }
+    }
+
+    this.items = brainDareService.getItems();
+
+    this.items.$loaded().then(function(dares) {
+      console.log(dares.length); // data is loaded here
+      $scope.count = dares.length;
+    });
+
+    this.removeItem = function (id) {
+      brainDareService.removeItem(id);
+    };
+
+  }])
   .controller('SelfCtrl', ['brainDareService', function(brainDareService){
     this.currentItem = null;
 
@@ -46,23 +60,23 @@
     };
   }])
   .controller('ChatsCtrl', ['$scope', function($scope) {
-    //this.chats = Chats.all();
-    //this.remove = function(chat) {
-    //  Chats.remove(chat);
-    //}
+
   }])
 
 
-
-  .controller('AccountCtrl', ['$scope', 'auth', 'store', '$state', function($scope, auth, store, $state) {
-    this.logout = function () {
-      auth.signout();
-      store.remove('token');
-      store.remove('profile');
-      store.remove('refreshToken');
-      $state.go('login', {}, {reload: true});
-    };
-
+  .controller('AccountCtrl', ['$scope', 'auth', 'store', '$state', 'Auth', function($scope, auth, store, $state, Auth) {
+    //this.logout = function () {
+    //  auth.signout();
+    //  store.remove('token');
+    //  store.remove('profile');
+    //  store.remove('refreshToken');
+    //  //$state.go('login', {}, {reload: true});
+    //  $state.go('login');
+    //};
+  this.logout = function (){
+    Auth.$unauth();
+    $state.go('login');
+  }
   }])
 
   .factory('brainDareService', ['$firebaseArray', 'FIREBASE_URI', function($firebaseArray, FIREBASE_URI) {
@@ -73,6 +87,10 @@
 
      var getItems = function() {
       return items;
+    };
+
+    var numChildren = function(){
+      return dares.numChildren();
     };
 
     var addItem = function(item) {
@@ -89,6 +107,7 @@
 
     return {
       getItems : getItems,
+      numChildren: numChildren,
       addItem : addItem,
       updateItem : updateItem,
       removeItem : removeItem
