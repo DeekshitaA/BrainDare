@@ -3,7 +3,10 @@
   "app_id": "b90389e8",
   "defaultBrowser": "google chrome",
   "gulpStartupTasks": [
-    "default"
+    "ng_annotate",
+    "templatecache",
+    "sass",
+    "concat"
   ],
   "watchPatterns": [
     "www/**/*",

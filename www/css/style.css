@@ -13,3 +13,11 @@
 .full_width{
   width:100%
 }
+
+i.ion-ios-heart {
+  font-size: 50px;
+}
+
+.red{
+  color: darkred;
+}

@@ -1,39 +1,33 @@
-<div class="content">
+<ion-view view-title="Get Started!">
+  <ion-content>
     <!--<button class="button button-energized" ng-click="addImage()">-->
       <!--Add image-->
     <!--</button><br><br>-->
       <!--<img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/>-->
 
-<form ng-submit="register.addUser()">
+<form novalidate>
 
   <div class="list">
     <label class="item item-input item-floating-label">
       <span class="input-label">Name</span>
-      <input type="text" placeholder="Name" ng-model="register.user.name">
+      <input type="text" placeholder="John Doe" ng-model="name">
     </label>
     <label class="item item-input item-floating-label">
       <span class="input-label">Email</span>
-      <input type="text" placeholder="Email" ng-model="register.user.email">
+      <input type="text" placeholder="example@email.com" ng-model="email">
     </label>
     <label class="item item-input item-floating-label">
       <span class="input-label">Password</span>
-      <input type="password" placeholder="Password" ng-model="register.user.password">
-    </label>
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Age</span>
-      <input type="number" placeholder="Age" ng-model="register.user.age">
-    </label>
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Gender</span>
-      <input type="text" placeholder="Gender" ng-model="register.user.gender">
+      <input type="password" placeholder="Password" ng-model="pwd">
     </label>
   </div>
   <div class="padding">
-    <button  class="button button-block button-positive">Create Greatness</button>
+    <button  class="button button-block button-positive" ng-click="register.addUser(email,pwd, name)">Create Greatness</button>
    </div>
 
 </form>
 
-</div>
+</ion-content>
 
+</ion-view>
 

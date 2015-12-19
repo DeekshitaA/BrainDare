@@ -32,7 +32,6 @@
             url: '/register',
             controller: 'registerCtrl as register',
             templateUrl: 'register.html',
-            // controllerAs: 'register'
           })
 
           .state('login', {
@@ -76,12 +75,12 @@
             }
           })
 
-          .state('tab.dare_self', {
-            url:'/dash/self',
+          .state('tab.dare', {
+            url:'/dash/dare',
             views: {
               'tab-dash': {
-                templateUrl : 'tab-self.html',
-                controller: 'SelfCtrl as self'
+                templateUrl : 'tab-dare.html',
+                controller: 'DareCtrl as dare'
               }
             }
           })

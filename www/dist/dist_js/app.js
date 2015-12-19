@@ -22,6 +22,7 @@ angular.module('app',
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
+
       if(window.StatusBar) {
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
@@ -83,6 +84,25 @@ angular.module('app',
     var usersRef = new Firebase(endPoint);
     return $firebaseAuth(usersRef);
   }])
+
+  .factory('firebaseData', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
+    var ref = new Firebase(FIREBASE_URI);
+
+    var users = function() {
+      return ref.child('users');
+    }
+
+   var getDares = function(){
+     return ref.child('dares');
+   }
+
+    return {
+      getUsers : users,
+      getDares : getDares
+    }
+
+  }])
+
 
 .constant('FIREBASE_URI', 'https://boiling-heat-1945.firebaseio.com');
 

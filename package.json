@@ -33,7 +33,8 @@
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
     "cordova-plugin-inappbrowser",
-    "org.apache.cordova.inappbrowser"
+    "org.apache.cordova.inappbrowser",
+    "cordova-plugin-datepicker"
   ],
   "cordovaPlatforms": []
 }

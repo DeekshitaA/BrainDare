@@ -1,0 +1,61 @@
+<ion-view title="Dare on">
+  <ion-content>
+      <div class="well">
+        <ion-nav-buttons side="left">
+          <button class="button" ng-click="$ionicGoBack($event)"><i class="ion-arrow-left-c"></i> Back</button>
+        </ion-nav-buttons>
+
+        <form class="form-inline" name="dareForm" role="form" novalidate ng-submit="dare.addItem()">
+          <div class="card">
+            <div class="item item-input-inset">
+                <div class="row">
+                  <div class="col-25">
+                    <i class="red ion-ios-heart"></i>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" class="form-control" ng-model="dareForm.title" placeholder="Name of Task">
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="item item-input-inset">
+                <textarea class="full_width" ng-model="dareForm.descr" placeholder="Describe why it is important..."></textarea>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="item item-input-inset">
+              <div class="row">
+                <div class="col-40">
+                  Complete by:
+                </div>
+                <div class="col-60">
+                  <button class="button-clear button-balanced" ng-model="dareForm.date" ng-click="dare.showDatePicker()"> {{dare.date | date:'dd MMMM yyyy'}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="dare.newItem.name" placeholder="Name">
+          </div>
+
+          <button type="submit" class="btn btn-default">Add</button>
+        </form>
+      </div>
+
+    <ion-list>
+      <div class="card" ng-repeat="card in dare.items |filter:user.uid">
+
+        <div class="item item-text-wrap">
+          {{card.name}}
+        </div>
+        <div class="item item-divider">
+          <a ng-click="dare.removeItem(card)">Remove</a>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

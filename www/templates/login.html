@@ -9,35 +9,42 @@
   <!--</ion-footer-bar>-->
 <!--</ion-pane>-->
 <ion-view hide-nav-bar="true">
-  <ion-content>
-
+  <ion-content scroll="false">
 
     <section class="login-container">
       <div class = "col header text-center">
         <img src="./img/bdIcon.png" class = "logo" />
       </div>
+
+      <div class = "col text-center">
+        <button  class="button icon-left ion-social-facebook button-positive button-full"  ng-click="login.facebook()">Connect with Facebook</button>
+
+      </div>
+
+      <div class = "col button-row text-center">
+        OR
+      </div>
+
       <div class = "col button-row">
-        <form name="login.loginForm" novalidate>
+        <!--<form name="login.loginForm" novalidate>-->
           <div class="list">
             <label class="item item-input item-floating-label">
               <span class="input-label">Email</span>
-              <input type="email" placeholder="Email" ng-model="user.email">
+              <input type="email" placeholder="Email" ng-model="login.email">
             </label>
             <label class="item item-input item-floating-label">
               <span class="input-label">Password</span>
-              <input type="password" placeholder="Password" ng-model="user.password">
+              <input type="password" placeholder="Password" ng-model="login.pwd">
             </label>
           </div>
           <div class="padding">
-            <button  class="button button-block button-balanced">Access</button>
+            <button  class="button button-block button-balanced" ng-click="login.emailLogin(login.email, login.pwd)">Access</button>
           </div>
-          </form>
+          <!--</form>-->
       </div>
-      <div class = "col button-row text-center">
-       OR
-      </div>
-      <div class = "col text-center">
-        <button  class="button icon-center ion-social-facebook button-positive button-full"  ng-click="login.facebook()"></button>
+
+      <div class = "col button-row">
+        <a ui-sref="register">New Here? Sign In !</a>
 
       </div>
     </section>
