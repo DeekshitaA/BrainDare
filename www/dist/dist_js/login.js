@@ -20,7 +20,7 @@
           }).catch(function(error){
             console.error(error);
           },{
-            remember: "sessionOnly",
+           // remember: "sessionOnly",
             scope: "email,user_likes"
           });
 

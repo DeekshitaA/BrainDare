@@ -1,11 +1,11 @@
 angular.module('app',
   [
-    'ionic',
+    'ionic','ionic.service.core',
     'auth0',
     'firebase',
     'angular-storage',
     'angular-jwt',
-    'ionic.service.core',
+
     'templates',
     'app.welcome',
     'app.register',
@@ -27,6 +27,14 @@ angular.module('app',
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+      var push = new Ionic.Push({
+        "debug": true
+      });
+
+      push.register(function(token) {
+        console.log("Device token:",token.token);
+      });
     });
   })
 

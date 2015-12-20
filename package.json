@@ -34,7 +34,8 @@
     "com.ionic.keyboard",
     "cordova-plugin-inappbrowser",
     "org.apache.cordova.inappbrowser",
-    "cordova-plugin-datepicker"
+    "cordova-plugin-datepicker",
+    "phonegap-plugin-push"
   ],
   "cordovaPlatforms": []
 }

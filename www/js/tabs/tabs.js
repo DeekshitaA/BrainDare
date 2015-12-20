@@ -50,15 +50,31 @@
   //  The Dare Form Controller
 
   .controller('DareCtrl', function($scope, brainDareService){
-    this.date = new Date();
-    this.showDatePicker = function($event) {
+
+    this.completeDate = "Complete by";
+    this.remindDate = "Remind me on";
+
+    this.showDatePicker = function(kind, $event) {
+      var kind = kind;
       var options = {
-        date: this.date,
-        mode: 'date'
+        date: new Date(),
+        mode: 'datetime', // 'date' or 'time'
+        minDate: new Date(),
+        allowOldDates: false,
+        allowFutureDates: true,
+        doneButtonLabel: 'DONE',
+       // doneButtonColor: '#F2F3F4',
+        cancelButtonLabel: 'CANCEL',
+      //  cancelButtonColor: '#000000'
       };
       datePicker.show(options, function(date){
         if(date != 'Invalid Date') {
-          console.log("Date came" + date);
+
+          if(kind === 'complete'){
+            this.completeDate = date;
+          } else if(kind === 'remind'){
+            this.remindDate = date;
+          }
         } else {
           console.log(date);
         }
@@ -66,19 +82,23 @@
       $event.stopPropagation();
     };
 
-    $scope.user = brainDareService.getUser();
+    this.user = brainDareService.getUser();
 
     this.currentItem = null;
 
     this.items = brainDareService.getItems();
 
-    this.addItem = function () {
-      this.newItem = {
-                        by: $scope.user.uid,
-                        name: '',
-                        type:'self',
+    this.addDare = function () {
 
-                    };
+      this.newItem = {
+        by: this.user.uid,
+        taskName: this.taskName,
+        taskDescr: this.taskDescr,
+        completeDate: this.completeDate,
+        remindDate: this.remindDate,
+        type:'self'
+
+      };
       brainDareService.addItem(angular.copy(this.newItem));
 
     };
