@@ -7,6 +7,7 @@
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -15,27 +16,31 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
+    <!--<script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>-->
     <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+
+    <script src="lib/ionic-service-core/ionic-core.js"></script>
+    <script src="lib/ionic-service-push/ionic-push.js"></script>
+
+    <script src="lib/angular-websocket/angular-websocket.js"></script>
 
     <script src="lib/firebase/firebase.js"></script>
     <script src="lib/angularfire/dist/angularfire.min.js"></script>
 
-    <!-- Auth0 Lock -->
-    <script src="lib/auth0-lock/build/auth0-lock.js"></script>
-    <!-- auth0-angular -->
-    <script src="lib/auth0-angular/build/auth0-angular.js"></script>
-    <!-- angular storage -->
-    <script src="lib/a0-angular-storage/dist/angular-storage.js"></script>
-    <!-- angular-jwt -->
+    <!--&lt;!&ndash; Auth0 Lock &ndash;&gt;-->
+    <!--<script src="lib/auth0-lock/build/auth0-lock.js"></script>-->
+    <!--&lt;!&ndash; auth0-angular &ndash;&gt;-->
+    <!--<script src="lib/auth0-angular/build/auth0-angular.js"></script>-->
+    <!--&lt;!&ndash; angular storage &ndash;&gt;-->
+    <!--<script src="lib/a0-angular-storage/dist/angular-storage.js"></script>-->
+    <!--&lt;!&ndash; angular-jwt &ndash;&gt;-->
     <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
-
-    <script src="js/auth0-variables.js"></script>
-    <!-- your app's js -->
+    <!--your app's js-->
     <script src="dist/dist_js/bd.min.js"></script>
 
     </head>

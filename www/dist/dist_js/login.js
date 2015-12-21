@@ -3,8 +3,15 @@
 
   angular.module('app.login', ['ngCordova'])
 
-     .controller('loginCtrl'  , ['$scope', '$state', 'Auth', 'firebaseData', function($scope, $state, Auth, firebaseData){
+     .controller('loginCtrl'  , ['$scope', '$state', 'Auth', 'firebaseData', 'ionicMaterialInk', function($scope, $state, Auth, firebaseData, ionicMaterialInk){
 
+     //  $scope.$parent.clearFabs();
+
+       //$timeout(function() {
+       //  $scope.$parent.hideHeader();
+       //}, 0);
+
+       ionicMaterialInk.displayEffect();
        $scope.user = Auth.$getAuth();
        $scope.usersData = firebaseData.getUsers();
        $scope.isNewFBUser = false;

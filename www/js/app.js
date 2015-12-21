@@ -1,11 +1,10 @@
 angular.module('app',
   [
-    'ionic','ionic.service.core',
-    'auth0',
+    'ionic',
+    'ionic-material',
+    'ionic.service.core',
+    'ionic.service.push',
     'firebase',
-    'angular-storage',
-    'angular-jwt',
-
     'templates',
     'app.welcome',
     'app.register',
@@ -14,6 +13,14 @@ angular.module('app',
     'app.landing',
     'app.tabs'
   ])
+
+  .config(function($ionicAppProvider) {
+    $ionicAppProvider.identify({
+      app_id: 'b90389e8',
+      api_key: 'ad1b4c020a434289985ae0e41ce7034178893c4b93bd9ea4',
+      dev_push: false
+    });
+  })
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

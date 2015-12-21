@@ -1,11 +1,10 @@
 angular.module('app',
   [
     'ionic',
-    'auth0',
-    'firebase',
-    'angular-storage',
-    'angular-jwt',
+    'ionic-material',
     'ionic.service.core',
+    'ionic.service.push',
+    'firebase',
     'templates',
     'app.welcome',
     'app.register',
@@ -14,6 +13,14 @@ angular.module('app',
     'app.landing',
     'app.tabs'
   ])
+
+  .config(['$ionicAppProvider', function($ionicAppProvider) {
+    $ionicAppProvider.identify({
+      app_id: 'b90389e8',
+      api_key: 'ad1b4c020a434289985ae0e41ce7034178893c4b93bd9ea4',
+      dev_push: false
+    });
+  }])
 
   .run(['$ionicPlatform', function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -27,6 +34,14 @@ angular.module('app',
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+      var push = new Ionic.Push({
+        "debug": true
+      });
+
+      push.register(function(token) {
+        console.log("Device token:",token.token);
+      });
     });
   }])
 

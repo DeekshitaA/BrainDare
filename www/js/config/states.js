@@ -2,21 +2,21 @@
   //'use strict';
 
   angular.module('app')
-    .config(['$stateProvider', '$urlRouterProvider','authProvider','$locationProvider', '$httpProvider','jwtInterceptorProvider', Config])
+    .config(['$stateProvider', '$urlRouterProvider','$locationProvider', '$httpProvider', Config])
 
-    .run(function($rootScope, auth, store) {
-      $rootScope.$on('$locationChangeStart', function() {
-        if (!auth.isAuthenticated) {
-          var token = store.get('token');
-          if (token) {
-            auth.authenticate(store.get('profile'), token);
-          }
-        }
+    //.run(function($rootScope, auth, store) {
+    //  $rootScope.$on('$locationChangeStart', function() {
+    //    if (!auth.isAuthenticated) {
+    //      var token = store.get('token');
+    //      if (token) {
+    //        auth.authenticate(store.get('profile'), token);
+    //      }
+    //    }
+    //
+    //  });
+    //})
 
-      });
-    })
-
-      function Config($stateProvider, $urlRouterProvider, authProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
+      function Config($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
         $stateProvider
 
@@ -127,29 +127,29 @@
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/login');
 
+        //
+        //authProvider.init({
+        //  domain: 'dkapp.auth0.com',
+        //  clientID: '0NF0PCmamT2ndVAq4lqdV1znp5Oaf91w',
+        //  loginState: 'login' // This is the name of the state where you'll show the login, which is defined above...
+        //});
 
-        authProvider.init({
-          domain: 'dkapp.auth0.com',
-          clientID: '0NF0PCmamT2ndVAq4lqdV1znp5Oaf91w',
-          loginState: 'login' // This is the name of the state where you'll show the login, which is defined above...
-        });
 
-
-        jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
-          var idToken = store.get('token');
-          var refreshToken = store.get('refreshToken');
-          if (!idToken || !refreshToken) {
-            return null;
-          }
-          if (jwtHelper.isTokenExpired(idToken)) {
-            return auth.refreshIdToken(refreshToken).then(function(idToken) {
-              store.set('token', idToken);
-              return idToken;
-            });
-          } else {
-            return idToken;
-          }
-        }
-           $httpProvider.interceptors.push('jwtInterceptor');
+      //  jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
+      //    var idToken = store.get('token');
+      //    var refreshToken = store.get('refreshToken');
+      //    if (!idToken || !refreshToken) {
+      //      return null;
+      //    }
+      //    if (jwtHelper.isTokenExpired(idToken)) {
+      //      return auth.refreshIdToken(refreshToken).then(function(idToken) {
+      //        store.set('token', idToken);
+      //        return idToken;
+      //      });
+      //    } else {
+      //      return idToken;
+      //    }
+      //  }
+      //     $httpProvider.interceptors.push('jwtInterceptor');
       }
 }());

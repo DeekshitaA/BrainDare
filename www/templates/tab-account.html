@@ -3,5 +3,13 @@
     <button class="button button-positive button-block" ng-click="account.logout()">
     Logout
     </button>
+
+    <button class="button button-block button-dark" ng-click="account.identifyUser()">
+      Identify a user
+    </button>
+
+    <button class="button button-block button-positive" ng-if="identified" ng-click="account.pushRegister()">
+      Register for Push
+    </button>
   </ion-content>
 </ion-view>
