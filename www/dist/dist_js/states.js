@@ -38,7 +38,16 @@
             url: '/login',
             controller: 'loginCtrl as login',
             templateUrl: 'login.html',
-          })
+            //views: {
+            //  'menuContent': {
+            //    controller: 'loginCtrl as login',
+            //    templateUrl: 'login.html',
+            //  },
+            //  'fabContent': {
+            //    template: ''
+            //  }
+            //}
+         })
 
           //.state('landing', {
           //  url: '/landing',

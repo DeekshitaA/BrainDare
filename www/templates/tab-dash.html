@@ -4,34 +4,43 @@
     <div class="item item-avatar">
       <img ng-src="{{authData.facebook.cachedUserProfile.picture.data.url}}">
       <h2>{{authData.facebook.displayName}}</h2>
+      <div class="item item-text-wrap">
+        {{quote}}
+      </div>
     </div>
 
     <div class="item item-body">
 
       <!--Add Dare Button-->
-      <div class="card">
+      <div class="list card balanced-bg">
         <div class="item item-text-wrap">
-          <a class="item item-icon-left" ng-click="dash.addDare()">
+          <a class="item item-icon-left " ng-click="dash.addDare()">
             <i class="ion-android-add-circle"></i>
             Add a Dare
           </a>
         </div>
       </div>
 
-      <!--Self Dare Button-->
-      <div class="card">
-        <div class="item item-text-wrap">
-          <a class="item item-icon-left" ng-click="dash.selfDares()">
-            <i class="ion-ios-bolt"></i>
-            Dare for Self
-            <span class="badge badge-assertive">{{count}}</span>
-          </a>
-        </div>
-      </div>
+         <!--&lt;!&ndash;Self Dare Button&ndash;&gt;-->
+      <!--<div class="card">-->
+      <!--<a class="item item-icon-left padding" ng-click="dash.selfDares()">-->
+      <!--<i class="ion-ios-bolt"></i>-->
+      <!--Dare for Self-->
+      <!--<span class="badge badge-assertive">{{count}}</span>-->
+      <!--</a>-->
+      <!--<a class="button button-full item button-assertive" ng-click="dash.selfDares()">-->
+      <!--<i ng-show="dash.downArrow" class="icon icon-budicon-9 ion-chevron-down"></i>-->
+      <!--<i ng-hide="dash.downArrow" class="icon icon-budicon-9 ion-chevron-up"></i>-->
+      <!--</a>-->
+      <!--</div>-->
 
-      <div class="card" ng-repeat="card in dash.items |filter:user.password.email" ng-show="dash.showSelfDares">
+      <div class="card" ng-repeat="card in dash.items |filter:uid" >
+        <!--ng-show="dash.showSelfDares"-->
         <div class="item item-text-wrap">
-          {{card.name}}
+          {{card.taskName}}
+        </div>
+        <div class="item item-text-wrap">
+          {{card.taskDescr}}
         </div>
         <div class="item item-divider">
           <a ng-click="dash.addDare()">Add</a>
@@ -42,14 +51,26 @@
       </div>
 
         <!--Group Dare Button-->
+      <!--<div class="card">-->
+        <!--<div class="item item-text-wrap">-->
+          <!--<a class="item item-icon-left" ui-sref="tab.dare_group">-->
+            <!--<i class="ion-ios-bolt"></i>-->
+            <!--Dare for Group-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</div>-->
+
       <div class="card">
         <div class="item item-text-wrap">
-          <a class="item item-icon-left" ui-sref="tab.dare_group">
-            <i class="ion-ios-bolt"></i>
-            Dare for Group
-          </a>
+          <button class="item item-icon-left" ng-click="dash.getQuoteCat()">
+            Get Quote
+          </button>
+            <div class="item item-text-wrap">
+              {{quote}}
+            </div>
         </div>
       </div>
+
     </div>
   </ion-content>
 </ion-view>

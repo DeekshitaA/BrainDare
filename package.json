@@ -35,7 +35,8 @@
     "cordova-plugin-inappbrowser",
     "org.apache.cordova.inappbrowser",
     "cordova-plugin-datepicker",
-    "phonegap-plugin-push"
+    "phonegap-plugin-push",
+    "de.appplant.cordova.plugin.local-notification"
   ],
   "cordovaPlatforms": []
 }

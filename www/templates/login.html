@@ -1,80 +1,68 @@
 
-<!--<ion-pane id="welcome" class="welcomePane">-->
-  <!--<h1 class="title">Dare to Take the first step to changing your life!!</h1>-->
-
-  <!--<ion-footer-bar>-->
-    <!--<a class="full_width button button-assertive" ng-click="login.login()" >-->
-      <!--Lets Go !!-->
-    <!--</a>-->
-  <!--</ion-footer-bar>-->
-<!--</ion-pane>-->
 <ion-view hide-nav-bar="true">
   <ion-content>
+<!--style="background-image: url('./img/bdIcon.png');"-->
+    <div class="ionic login blue" >
+      <div class="hero no-header flat">
+        <div class="content">
+          <i class="ion-map icon hero-icon royal-bg"></i>
+          <h1>Brain Dare</h1>
+        </div>
+      </div>
+      <div class="list">
+        <label class="item item-input item-md-label" placeholder="Username" highlight-color="balanced" type="text"><input type="text" ng-model="login.email"><span class="input-label">Username</span><div class="highlight highlight-balanced"></div></label>
+        <label class="item item-input item-md-label" placeholder="Password" highlight-color="energized" type="password"><input type="password" ng-model="login.pwd"><span class="input-label">Password</span><div class="highlight highlight-energized"></div></label>
+      </div>
+      <div class="padding">
+        <button class="button button-block cyan white_text waves-effect waves-button waves-light" ng-click="login.emailLogin(login.email, login.pwd)">Login</button>
+      </div>
+      <div class="button-bar">
+        <a class="button button-small button-outline button-balanced white light-bg waves-effect waves-button waves-light white_text" ui-sref="register"> Sign In </a>
+        <button class="button button-small button-outline button-positive white light-bg icon-left ion-social-facebook waves-effect waves-button waves-light" ng-click="login.facebook()">Facebook</button>
+      </div>
+    </div>
 
-    <!--<div class="hero no-header flat">-->
-      <!--<div class="content">-->
-        <!--<div class="app-icon"> <img src="./img/bdIcon.png" class = "logo" /></div>-->
-        <!--<h1>Brain Dare</h1>-->
+
+
+
+
+
+    <!--<section class="login-container login">-->
+      <!--<div class = "col header text-center">-->
+        <!--<img src="./img/bdIcon.png" class = "logo" />-->
       <!--</div>-->
-    <!--</div>-->
-    <!--<div class="list">-->
-      <!--<ion-md-input placeholder="Email" ng-model="login.email" highlight-color="balanced" type="text"></ion-md-input>-->
-      <!--<ion-md-input placeholder="Password" ng-model="login.pwd" highlight-color="energized" type="password"></ion-md-input>-->
-    <!--</div>-->
-    <!--<div class="padding">-->
-      <!--<button ui-sref="app.profile" class="button button-full button-assertive ink" ng-click="login.emailLogin(login.email, login.pwd)">Login</button>-->
-    <!--</div>-->
-    <!--<div class="padding">-->
-      <!--<a ui-sref="register">New Here? Sign In !</a>-->
-    <!--</div>-->
-    <!--<div class="button-bar social-login">-->
-      <!--<button class="button button-small button-border icon-left ion-social-google button-assertive-900">Google+</button>-->
-      <!--<button class="button button-small button-border icon-left ion-social-twitter button-calm-900">Twitter</button>-->
-      <!--<button class="button button-small button-border icon-left ion-social-facebook button-positive-900" ng-click="login.facebook()">Facebook</button>-->
-    <!--</div>-->
+      <!--<div class = "col button-row">-->
+        <!--&lt;!&ndash;<form name="login.loginForm" novalidate>&ndash;&gt;-->
+          <!--<div class="list">-->
+            <!--<label class="item item-input item-floating-label">-->
+              <!--<span class="input-label white_text">Email</span>-->
+              <!--<input type="email" placeholder="Email" ng-model="login.email">-->
+            <!--</label>-->
+            <!--<label class="item item-input item-floating-label">-->
+              <!--<span class="input-label white_text">Password</span>-->
+              <!--<input type="password" placeholder="Password" ng-model="login.pwd">-->
+            <!--</label>-->
+          <!--</div>-->
+          <!--<div class="padding">-->
+            <!--<button  class="button button-block cyan white_text" ng-click="login.emailLogin(login.email, login.pwd)">Access</button>-->
+          <!--</div>-->
+
+      <!--</div>-->
+      <!--<div class = "col button-row text-center white_text">-->
+        <!--OR-->
+      <!--</div>-->
+
+      <!--<div class = "col button-row text-center">-->
+        <!--<button  class="button icon-left ion-social-facebook button-positive button-full"  ng-click="login.facebook()">Connect with Facebook</button>-->
+        <!--<a class="white_text"ui-sref="register">New Here? Sign In !</a>-->
+
+      <!--</div>-->
 
 
-
-
-
-
-    <section class="login-container">
-      <div class = "col header text-center">
-        <img src="./img/bdIcon.png" class = "logo" />
-      </div>
-
-      <div class = "col text-center">
-        <button  class="button icon-left ion-social-facebook button-positive button-full"  ng-click="login.facebook()">Connect with Facebook</button>
-
-      </div>
-
-      <div class = "col button-row text-center">
-        OR
-      </div>
-
-      <div class = "col button-row">
-        <!--<form name="login.loginForm" novalidate>-->
-          <div class="list">
-            <label class="item item-input item-floating-label">
-              <span class="input-label">Email</span>
-              <input type="email" placeholder="Email" ng-model="login.email">
-            </label>
-            <label class="item item-input item-floating-label">
-              <span class="input-label">Password</span>
-              <input type="password" placeholder="Password" ng-model="login.pwd">
-            </label>
-          </div>
-          <div class="padding">
-            <button  class="button button-block button-balanced" ng-click="login.emailLogin(login.email, login.pwd)">Access</button>
-          </div>
-          <!--</form>-->
-      </div>
-
-      <div class = "col button-row">
-        <a ui-sref="register">New Here? Sign In !</a>
-
-      </div>
-    </section>
+      <!--&lt;!&ndash;<div class = "col button-row ">&ndash;&gt;-->
+      <!--&lt;!&ndash;&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</section>-->
 
 
 
@@ -110,6 +98,6 @@
     <!--</div>-->
 
     <!--<button ng-click="login.logout()" ng-show="authData">Logout</button>-->
-    </div>
+    <!--</div>-->
   </ion-content>
 </ion-view>

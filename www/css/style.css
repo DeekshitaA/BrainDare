@@ -18,6 +18,18 @@ i.ion-ios-heart {
   font-size: 50px;
 }
 
-.red{
-  color: darkred;
+.cyan{
+  background-color: #179a99;
+}
+
+.white_text{
+  color: white;
+}
+
+.blue{
+  background-color: #304158;
+}
+
+.white{
+  background-color: white;
 }

@@ -8,10 +8,7 @@
       $scope.usersData = firebaseData.getUsers();
 
      this.addUser = function(email, pwd, name) {
-       //console.log(this.user);
-       //registerUserService.createUser(this.user).then(function(response) {
-       //    console.log("You got to the place ", response);
-       //})
+
        Auth.$createUser({
          email: email,
          password: pwd
@@ -28,7 +25,8 @@
          $scope.usersData.child(authData.uid).set({
            userId: authData.uid,
            provider: authData.provider,
-           name: name
+           name: name,
+           email: email
            //some more user data
          });
          $state.go('tab.dash');

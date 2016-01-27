@@ -10,7 +10,7 @@
             <div class="item item-input-inset">
                 <div class="row">
                   <div class="col-25">
-                    <i class="red ion-ios-heart"></i>
+                    <i class="assertive ion-ios-heart"></i>
                   </div>
                   <div class="col-75">
                     <input type="text" class="form-control" ng-model="dare.taskName" placeholder="Name of Task">
@@ -26,19 +26,23 @@
           </div>
 
           <div class="card">
-            <div class="item item-input-inset">
-
-                  <button class="button-clear button-block button-balanced icon-right ion-android-calendar" ng-model="dare.completeDate" ng-click="dare.showDatePicker('complete')"> {{completeDate | date:'dd MMMM yyyy'}}</button>
-
+            <div class="item item-input item-select">
+              <div class="input-label">
+                Complete By:
+              </div>
+               <button class="button-clear button-block button-balanced icon-right ion-android-calendar" ng-model="complete" ng-click="dare.showDatePicker()">
+                 {{complete | date:'dd MMMM yyyy'}}
+               </button>
             </div>
           </div>
 
-
           <div class="card">
-            <div class="item item-input-inset">
-
-              <button class="button-clear button-block button-balanced icon-right ion-android-calendar" ng-model="dare.remindDate" ng-click="dare.showDatePicker('remind')"> {{remindDate | date:'dd MMMM yyyy'}}</button>
-
+            <div class="item item-input item-select">
+              <div class="input-label">
+                Remind Me Every:
+              </div>
+              <select ng-options="remind.name for remind in dare.remindMeOptions track by remind.id" ng-model="dare.remindSelected">
+              </select>
             </div>
           </div>
 
@@ -50,20 +54,6 @@
             </div>
           </div>
       </form>
-
-<!--For testing purposes -->
       </div>
-
-    <ion-list>
-      <div class="card" ng-repeat="card in dare.items |filter:user.uid">
-
-        <div class="item item-text-wrap">
-          {{card.taskName}} :: {{card.taskDescr}}
-        </div>
-        <div class="item item-divider">
-          <a ng-click="dare.removeItem(card)">Remove</a>
-        </div>
-      </div>
-    </ion-list>
   </ion-content>
 </ion-view>
