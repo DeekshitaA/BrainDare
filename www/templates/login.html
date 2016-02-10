@@ -1,8 +1,7 @@
-
-<ion-view hide-nav-bar="true">
-  <ion-content>
-<!--style="background-image: url('./img/bdIcon.png');"-->
-    <div class="ionic login blue" >
+<ion-view hide-nav-bar="true" style="overflow-y: hidden;">
+  <ion-content class="blue">
+    <!--style="background-image: url('./img/bdIcon.png');"-->
+    <div class="ionic login " >
       <div class="hero no-header flat">
         <div class="content">
           <i class="ion-map icon hero-icon royal-bg"></i>
@@ -16,88 +15,14 @@
       <div class="padding">
         <button class="button button-block cyan white_text waves-effect waves-button waves-light" ng-click="login.emailLogin(login.email, login.pwd)">Login</button>
       </div>
+      <div class="padding divider">
+        <h6><span>or</span></h6>
+      </div>
       <div class="button-bar">
         <a class="button button-small button-outline button-balanced white light-bg waves-effect waves-button waves-light white_text" ui-sref="register"> Sign In </a>
         <button class="button button-small button-outline button-positive white light-bg icon-left ion-social-facebook waves-effect waves-button waves-light" ng-click="login.facebook()">Facebook</button>
       </div>
     </div>
 
-
-
-
-
-
-    <!--<section class="login-container login">-->
-      <!--<div class = "col header text-center">-->
-        <!--<img src="./img/bdIcon.png" class = "logo" />-->
-      <!--</div>-->
-      <!--<div class = "col button-row">-->
-        <!--&lt;!&ndash;<form name="login.loginForm" novalidate>&ndash;&gt;-->
-          <!--<div class="list">-->
-            <!--<label class="item item-input item-floating-label">-->
-              <!--<span class="input-label white_text">Email</span>-->
-              <!--<input type="email" placeholder="Email" ng-model="login.email">-->
-            <!--</label>-->
-            <!--<label class="item item-input item-floating-label">-->
-              <!--<span class="input-label white_text">Password</span>-->
-              <!--<input type="password" placeholder="Password" ng-model="login.pwd">-->
-            <!--</label>-->
-          <!--</div>-->
-          <!--<div class="padding">-->
-            <!--<button  class="button button-block cyan white_text" ng-click="login.emailLogin(login.email, login.pwd)">Access</button>-->
-          <!--</div>-->
-
-      <!--</div>-->
-      <!--<div class = "col button-row text-center white_text">-->
-        <!--OR-->
-      <!--</div>-->
-
-      <!--<div class = "col button-row text-center">-->
-        <!--<button  class="button icon-left ion-social-facebook button-positive button-full"  ng-click="login.facebook()">Connect with Facebook</button>-->
-        <!--<a class="white_text"ui-sref="register">New Here? Sign In !</a>-->
-
-      <!--</div>-->
-
-
-      <!--&lt;!&ndash;<div class = "col button-row ">&ndash;&gt;-->
-      <!--&lt;!&ndash;&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--</section>-->
-
-
-
-
-    <!---->
-    <!---->
-    <!--<div class="card">-->
-    <!--&lt;!&ndash; The content of the page &ndash;&gt;-->
-    <!--<form name="login.loginForm" novalidate>-->
-      <!--<div class="list">-->
-        <!--<label class="item item-input item-floating-label">-->
-          <!--<span class="input-label">Email</span>-->
-          <!--<input type="email" placeholder="Email" ng-model="user.email">-->
-        <!--</label>-->
-        <!--<label class="item item-input item-floating-label">-->
-          <!--<span class="input-label">Password</span>-->
-          <!--<input type="password" placeholder="Password" ng-model="user.password">-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--<div class="padding">-->
-        <!--<button  class="button button-block button-balanced">Access</button>-->
-      <!--</div>-->
-      <!--<div class="padding">-->
-      <!--<span class="col-center">OR</span>-->
-        <!--</div>-->
-      <!--<div class="padding">-->
-      <!--<button  class="button icon-center ion-social-facebook button-positive button-full"  ng-click="login.facebook()" ng-hide="authData"></button>-->
-      <!--</div>-->
-    <!--</form>-->
-    <!--<div class="card" ng-show="authData">-->
-      <!--<img ng-src="{{authData.facebook.cachedUserProfile.picture.data.url}}" />-->
-      <!--<span>Welcome back {{authData.facebook.displayName}}</span>-->
-    <!--</div>-->
-
-    <!--<button ng-click="login.logout()" ng-show="authData">Logout</button>-->
-    <!--</div>-->
   </ion-content>
 </ion-view>

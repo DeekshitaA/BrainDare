@@ -11,7 +11,10 @@
     ionicMaterialInk.displayEffect();
 
     ionicMaterialMotion.fadeSlideIn();
-
+    quotes.getQuote().then(function(res) {
+      console.log('res', res);
+      $scope.quote = res;//res.data.contents.quotes[0].quote;
+    });
 
     $scope.user = brainDareService.getUser();
     this.showSelfDares = false;

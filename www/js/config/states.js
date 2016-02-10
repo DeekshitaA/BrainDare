@@ -20,14 +20,6 @@
 
         $stateProvider
 
-        // setup an abstract state for the tabs directive
-        //  .state('welcome', {
-        //    url: '/',
-        //    controller: 'welcomeCtrl',
-        //    templateUrl: 'welcome.html',
-        //    controllerAs: 'welcome'
-        //  })
-
           .state('register', {
             url: '/register',
             controller: 'registerCtrl as register',
@@ -38,15 +30,6 @@
             url: '/login',
             controller: 'loginCtrl as login',
             templateUrl: 'login.html',
-            //views: {
-            //  'menuContent': {
-            //    controller: 'loginCtrl as login',
-            //    templateUrl: 'login.html',
-            //  },
-            //  'fabContent': {
-            //    template: ''
-            //  }
-            //}
          })
 
           //.state('landing', {
@@ -136,29 +119,5 @@
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/login');
 
-        //
-        //authProvider.init({
-        //  domain: 'dkapp.auth0.com',
-        //  clientID: '0NF0PCmamT2ndVAq4lqdV1znp5Oaf91w',
-        //  loginState: 'login' // This is the name of the state where you'll show the login, which is defined above...
-        //});
-
-
-      //  jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
-      //    var idToken = store.get('token');
-      //    var refreshToken = store.get('refreshToken');
-      //    if (!idToken || !refreshToken) {
-      //      return null;
-      //    }
-      //    if (jwtHelper.isTokenExpired(idToken)) {
-      //      return auth.refreshIdToken(refreshToken).then(function(idToken) {
-      //        store.set('token', idToken);
-      //        return idToken;
-      //      });
-      //    } else {
-      //      return idToken;
-      //    }
-      //  }
-      //     $httpProvider.interceptors.push('jwtInterceptor');
       }
 }());

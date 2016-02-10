@@ -1,12 +1,6 @@
 .welcomePane {
   background-color: #7CBAD2;
   padding: 20%;
-  /*text-shadow: 0px -2px 0px #333,*/
-  /*0px 2px 3px #666;*/
-  /*color: #353535;*/
-  /*text-transform: uppercase;*/
-  /*font-size: 60px;*/
-  /*font-weight: 800;*/
   text-align: center
 }
 
@@ -32,4 +26,97 @@ i.ion-ios-heart {
 
 .white{
   background-color: white;
+}
+
+/* Login
+==================================*/
+
+.app-icon {
+  background-color: #fff;
+  background: url('../img/bdIcon.png') center;
+  background-size: cover;
+  border-radius: 50%;
+  height: 125px;
+  margin: 0 auto;
+  width: 125px;
+}
+
+.social-login {
+  position: fixed;
+  bottom: 0;
+}
+
+.divider h6  {
+  width:100%;
+  text-align:center;
+  border-bottom: 1px solid white;
+  line-height:0.1em; margin:10px 0 20px;
+}
+
+.divider h6 span {
+  background:#304158;
+  padding:0 10px;
+  color: white;
+}
+
+
+/* Profile
+==================================*/
+
+#profile-bg {
+  position: fixed;
+  left: 0;
+  top: 44px;
+  width: 100%;
+  height: 150px;
+
+  /*     background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/94311/bg.jpg') no-repeat transparent;*/
+  background-size: 100%;
+  background-position: 50% 20%;
+
+  text-align: center;
+}
+
+#content {
+  position: relative;
+  margin-top: 80px;
+  background-color: white;
+  box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
+  padding-top: 170px;
+}
+
+#profile-info {
+  position: absolute;
+  top: -95px;
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+}
+#profile-name {
+  color: #444;
+  /*font-size: 26px;*/
+}
+#profile-description {
+  font-size: 15px;
+  color: #888;
+}
+#profile-description a {
+  color: #888;
+}
+
+#profile-image {
+  display: block;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  width: 100px;
+  height: 100px;
+  margin: 30px auto 0;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+}
+
+/* Dares
+==================================*/
+
+.daresList a {
+  padding: 0 !important;
 }

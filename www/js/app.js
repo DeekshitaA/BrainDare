@@ -46,10 +46,10 @@ angular.module('app',
       push.register(function(token) {
         console.log("Device token:",token.token);
       });
-
-      if(device && device.platform === "iOS") {
-        window.plugin.notification.local.promptForPermission();
-      }
+      //
+      //if(device && device.platform === "iOS") {
+      //  window.plugin.notification.local.promptForPermission();
+      //}
 
       window.plugin.notification.local.onadd = function (id, state, json) {
         var notification = {
