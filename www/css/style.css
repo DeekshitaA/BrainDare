@@ -120,3 +120,8 @@ i.ion-ios-heart {
 .daresList a {
   padding: 0 !important;
 }
+
+.dare {
+  color: black;
+  padding-top: 10px;
+}
